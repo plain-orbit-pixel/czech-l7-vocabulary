@@ -125,7 +125,7 @@ button:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.15)}
     <div class="actions">
       <button class="btn secondary" id="prevBtn">← Previous</button>
       <button class="btn secondary" id="hintBtn">English hint</button>
-      <button class="btn secondary" id="speakBtn">🔊 Listen</button>
+      <button class="btn secondary" id="speakBtn">🔊 Listen to English</button>
       <button class="btn secondary" id="starBtn">☆ Star</button>
       <button class="btn bad" id="revealBtn">Reveal answer</button>
       <button class="btn good" id="nextBtn">Next →</button>
@@ -363,7 +363,7 @@ function showCard() {
   $("#nextBtn").disabled = true;
   $("#revealBtn").disabled = false;
   $("#hintBtn").disabled = false;
-  $("#speakBtn").textContent = "🔊 Reveal & listen";
+  $("#speakBtn").textContent = "🔊 Reveal & listen to English";
 
   if (!c) {
     $("#picture").removeAttribute("src");
@@ -437,7 +437,7 @@ function check() {
       $("#nextBtn").disabled = false;
       $("#revealBtn").disabled = true;
       $("#hintBtn").disabled = true;
-      $("#speakBtn").textContent = "🔊 Listen";
+      $("#speakBtn").textContent = "🔊 Listen to English";
       setFeedback(
         "correct",
         `<strong>Correctly retyped ✓</strong><br>${escapeHtml(c.czech)} = ${escapeHtml(c.english)}
@@ -481,7 +481,7 @@ function check() {
   $("#nextBtn").disabled = false;
   $("#revealBtn").disabled = true;
   $("#hintBtn").disabled = true;
-  $("#speakBtn").textContent = "🔊 Listen";
+  $("#speakBtn").textContent = "🔊 Listen to English";
 
   if (p.finalDue) {
     p.done = true;
@@ -619,11 +619,11 @@ function speak(skipReveal = false) {
   }
 
   speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(c.czech);
-  u.lang = "cs-CZ";
-  u.rate = .78;
+  const u = new SpeechSynthesisUtterance(c.english);
+  u.lang = "en-US";
+  u.rate = .85;
   const voice = speechSynthesis.getVoices()
-    .find(v => v.lang?.toLowerCase().startsWith("cs"));
+    .find(v => v.lang?.toLowerCase().startsWith("en"));
   if (voice) u.voice = voice;
   speechSynthesis.speak(u);
 }
