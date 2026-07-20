@@ -1,4 +1,4 @@
-const CACHE_NAME = "czech-l7-v2";
+const CACHE_NAME = "czech-l7-v3";
 const APP_FILES = [
   "./",
   "./index.html",
