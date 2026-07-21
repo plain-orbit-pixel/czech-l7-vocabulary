@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#153c34">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Czech L7 Match">
+  <title>Czech L7 Picture Match</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">CZE 102 · LECTURE 7</p>
+        <h1>Picture Match</h1>
+      </div>
+      <button id="homeButton" class="icon-button" type="button" aria-label="Return home" hidden>⌂</button>
+    </header>
+
+    <section id="homeScreen" class="screen">
+      <div class="hero-card">
+        <span class="hero-icon">🇨🇿</span>
+        <h2>Master the 30 essential words</h2>
+        <p>Match each picture or type its exact Czech spelling. Missed words return in a focused review.</p>
+      </div>
+
+      <div class="stats-grid" aria-label="Saved progress">
+        <div><strong id="bestScore">—</strong><span>Best score</span></div>
+        <div><strong id="masteredCount">0/30</strong><span>Mastered</span></div>
+      </div>
+
+      <fieldset class="session-picker">
+        <legend>Session length</legend>
+        <label><input type="radio" name="length" value="10" checked><span>10</span></label>
+        <label><input type="radio" name="length" value="20"><span>20</span></label>
+        <label><input type="radio" name="length" value="30"><span>30</span></label>
+      </fieldset>
+
+      <button id="spellingStartButton" class="primary-button" type="button">Start spelling practice</button>
+      <button id="startButton" class="secondary-button" type="button">Start picture matching</button>
+      <button id="studyButton" class="secondary-button" type="button">Study all 30 words</button>
+      <p class="offline-note">✓ Works offline after the first load</p>
+    </section>
+
+    <section id="quizScreen" class="screen" hidden>
+      <div class="quiz-meta">
+        <span id="progressText">1 / 10</span>
+        <span id="scoreText">Score: 0</span>
+      </div>
+      <div class="progress-track"><div id="progressBar"></div></div>
+
+      <article class="picture-card">
+        <span id="categoryBadge" class="category-badge"></span>
+        <img id="quizImage" src="" alt="Choose the Czech word for this picture">
+      </article>
+
+      <p class="question">Which Czech word matches this picture?</p>
+      <div id="answers" class="answer-grid"></div>
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+      <button id="nextButton" class="primary-button" type="button" hidden>Next picture</button>
+    </section>
+
+    <section id="spellingScreen" class="screen" hidden>
+      <div class="quiz-meta">
+        <span id="spellingProgressText">1 / 10</span>
+        <span id="spellingScoreText">Score: 0</span>
+      </div>
+      <div class="progress-track"><div id="spellingProgressBar"></div></div>
+
+      <article class="picture-card spelling-picture">
+        <span id="spellingCategoryBadge" class="category-badge"></span>
+        <img id="spellingImage" src="" alt="Type the Czech word for this picture">
+      </article>
+
+      <form id="spellingForm" class="spelling-form">
+        <label for="spellingInput">Type the exact Czech spelling</label>
+        <div class="input-row">
+          <input id="spellingInput" type="text" inputmode="text" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="done" required>
+          <button type="submit">Check</button>
+        </div>
+      </form>
+      <div id="accentKeys" class="accent-keys" aria-label="Czech accent keys"></div>
+      <button id="hintButton" class="hint-button" type="button">Show hint</button>
+      <div id="spellingFeedback" class="feedback" aria-live="polite"></div>
+      <button id="spellingNextButton" class="primary-button" type="button" hidden>Next picture</button>
+    </section>
+
+    <section id="resultScreen" class="screen" hidden>
+      <div class="result-card">
+        <span id="resultEmoji" class="result-emoji">🎯</span>
+        <h2 id="resultTitle">Session complete</h2>
+        <strong id="resultScore" class="result-score">0/10</strong>
+        <p id="resultMessage"></p>
+      </div>
+      <div id="mistakePanel" class="mistake-panel" hidden>
+        <h3>Words to review</h3>
+        <div id="mistakeList"></div>
+        <button id="retryButton" class="primary-button" type="button">Retry missed words</button>
+      </div>
+      <button id="newSessionButton" class="secondary-button" type="button">New session</button>
+    </section>
+
+    <section id="studyScreen" class="screen" hidden>
+      <div class="study-heading">
+        <h2>Essential 30</h2>
+        <p>Tap a card to hear its Czech spelling.</p>
+      </div>
+      <div id="studyGrid" class="study-grid"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
